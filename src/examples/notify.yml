@@ -1,0 +1,20 @@
+description: >
+  Notify some people in xMatters
+  # What will this example document?
+  # Descriptions should be short, simple, and clear.
+
+usage:
+    jobs:
+        build:
+            docker:
+                - image: <docker image>
+            steps:
+                - xmatters/notify:
+                  author: Deon Sanders
+    orbs:
+        xmatters: xmatters/xmatters-orb@x.y
+    version: 2.1
+    workflows:
+        your-workflow:
+            jobs:
+                - build

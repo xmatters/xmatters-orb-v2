@@ -1,14 +1,6 @@
 # xmatters-orb Orb [![CircleCI Build Status](https://circleci.com/gh/xmatters/xmatters-orb-v2.svg?style=shield "CircleCI Build Status")](https://circleci.com/gh/xmatters/xmatters-orb-v2) [![CircleCI Orb Version](https://img.shields.io/badge/endpoint.svg?url=https://badges.circleci.io/orb/xmatters/xmatters-orb)](https://circleci.com/orbs/registry/orb/xmatters/xmatters-orb) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/xmatters/xmatters-orb-v2/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
-A description of your orb. Utilize this orb to easily add X to your CI/CD pipeline.
-
-**TODO:**
-Publish your production orb! You may notice the badges above and links to the registry page below are not working yet, once you publish your first production version orb, these will begin to function.
-
-What to do:
-* Make changes to your `Alpha` branch.
-* Flush out your integration test jobs
-* Merge to `master` with "`[semver:major]`" in the commit subject to publish 1.0.0 of your orb.
+Utilize this orb to easily add xMatters to your CI/CD pipeline.
 
 
 ## Usage
@@ -18,7 +10,7 @@ Example use-cases are provided on the orb [registry page](https://circleci.com/o
 
 ## Resources
 
-[CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/xmatters/xmatters-orb) - The official registry page of this orb for all versions, executors, commands, and jobs described.  
+[CircleCI Orb Registry Page](https://circleci.com/orbs/registry/orb/xmatters/xmatters-orb) - The official registry page of this orb for all versions, and commands described.  
 [CircleCI Orb Docs](https://circleci.com/docs/2.0/orb-intro/#section=configuration) - Docs for using and creating CircleCI Orbs.  
 
 ### How To Contribute

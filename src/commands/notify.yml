@@ -1,0 +1,90 @@
+description: Generate an xMatters event based on the build status of a job
+
+parameters:
+  author:
+    default: "${CIRCLE_USERNAME}"
+    description: The GitHub or Bitbucket username of the user who triggered the build.
+    type: string
+  project:
+    default: "${CIRCLE_PROJECT_REPONAME}"
+    description: Project the build is from
+    type: string
+  workflow_id:
+    default: "${CIRCLE_WORKFLOW_ID}"
+    description: A unique identifier for the workflow instance of the current job.
+    type: string
+  branch:
+    default: "${CIRCLE_BRANCH}"
+    description: The branch the commit is on
+    type: string
+  commit:
+    default: "${CIRCLE_SHA1}"
+    description: The commit hash
+    type: string
+  build:
+    default: "${CIRCLE_BUILD_NUM}"
+    description: The number of the CircleCI Build number
+    type: string
+  build_url:
+    default: "${CIRCLE_BUILD_URL}"
+    description: The URL for the current build.
+    type: string
+  job:
+    default: "${CIRCLE_JOB}"
+    description: The job name
+    type: string
+  xm_url:
+    default: "${XM_URL}"
+    description: The inbound integration url. This can be stored in the CircleCI UI as the 'XM_URL' env var
+    type: string
+
+steps:
+  - run:
+      name: Provide error if non-bash shell
+      command: |
+        if [ -z "$BASH" ]; then
+          echo Bash not installed.
+          exit 1
+        fi
+  - when:
+      condition: on_fail
+      steps:
+        - run:
+            command: |
+              echo 'export XM_BUILD_STATUS="fail"' >> $BASH_ENV
+            name: xMatters - Setting Failure Condition
+  - when:
+      condition: on_success
+      steps:
+        - run:
+            command: |
+              echo 'export XM_BUILD_STATUS="success"' >> $BASH_ENV
+            name: xMatters - Setting Success Condition
+  - run:
+      name: xMatters Inbound Command
+      shell: /bin/bash
+      command: |
+        # Provide error if no url is set and error. Otherwise continue
+        if [ -z "<< parameters.xm_url >>" ]; then
+          echo "NO XM_URL SET"
+          echo "Please input your XM_URL value either in the settings for this project, or as a parameter for this orb."
+          exit 1
+        fi
+
+        # Webhook properly set.
+        echo Generating event to xMatters
+        curl -X POST -H 'Content-type: application/json' \
+          --data \
+          "{\
+            \"properties\": {\
+              \"author\":        \"<< parameters.author >>\",\
+              \"project\":       \"<< parameters.project >>\",\
+              \"workflow_id\":   \"<< parameters.workflow_id >>\",\
+              \"branch\":        \"<< parameters.branch >>\",\
+              \"commit\":        \"<< parameters.commit >>\",\
+              \"build\":         \"<< parameters.build >>\",\
+              \"build_url\":     \"<< parameters.build_url >>\",\
+              \"job\":           \"<< parameters.job >>\",\
+              \"job_status\":    \"$XM_BUILD_STATUS\" \
+            } \
+          }" "<< parameters.xm_url >>"
