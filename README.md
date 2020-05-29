@@ -5,6 +5,8 @@ Utilize this orb to easily add xMatters to your CI/CD pipeline.
 
 ## Usage
 
+`xmatters/xmatters-orb@x.y`
+
 Example use-cases are provided on the orb [registry page](https://circleci.com/orbs/registry/orb/xmatters/xmatters-orb#usage-examples). Source for these examples can be found within the `src/examples` directory.
 
 
