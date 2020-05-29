@@ -1,0 +1,27 @@
+description: >
+  Notify some people in xMatters
+  # What will this example document?
+  # Descriptions should be short, simple, and clear.
+
+usage:
+  jobs:
+    build:
+      docker:
+        - image: <docker image>
+      steps:
+        - xmatters/notify_raw:
+            xm_url: ${XM_URL}
+            json_payload: "{ \"properties\": { \
+                          \"job\": \"job name here\", \
+                          \"author\": \"Deon Sanders\", \
+                          \"something\": \"value\"
+                          }, \
+                          \"recipients\": [{ \"id\": \"dsanders\" }] \
+                          }"
+  orbs:
+    xmatters: xmatters/xmatters-orb@x.y
+  version: 2.1
+  workflows:
+    your-workflow:
+      jobs:
+        - build
