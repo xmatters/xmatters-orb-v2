@@ -1,7 +1,5 @@
 description: >
-  Notify some people in xMatters
-  # What will this example document?
-  # Descriptions should be short, simple, and clear.
+  Trigger a build notification to recipients in xMatters using a custom json payload.
 
 usage:
   jobs:
