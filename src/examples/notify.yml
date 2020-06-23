@@ -1,5 +1,5 @@
 description: >
-  Trigger a build notification to an xMatters recipient. 
+  Trigger a build notification to an xMatters recipient.
 
 usage:
     jobs:
