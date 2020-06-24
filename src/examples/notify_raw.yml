@@ -1,5 +1,5 @@
 description: >
-  Trigger a build notification to recipients in xMatters using a custom json payload
+  Trigger a build notification to recipients in xMatters using a custom json payload.
 
 usage:
   jobs:
