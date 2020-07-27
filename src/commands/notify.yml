@@ -33,6 +33,9 @@ parameters:
     default: "${CIRCLE_JOB}"
     description: The job name
     type: string
+  recipients:
+    description: The xMatters group, user or device to target. Can be a comma separated list
+    type: string
   xm_url:
     default: "${XM_URL}"
     description: The inbound integration url. This can be stored in the CircleCI UI as the 'XM_URL' env var
@@ -85,6 +88,7 @@ steps:
               \"build\":         \"<< parameters.build >>\",\
               \"build_url\":     \"<< parameters.build_url >>\",\
               \"job\":           \"<< parameters.job >>\",\
+              \"recipients\":    \"<< parameters.recipients >>\",\
               \"job_status\":    \"$XM_BUILD_STATUS\" \
             } \
           }" "<< parameters.xm_url >>"
