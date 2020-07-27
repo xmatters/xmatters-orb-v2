@@ -1,4 +1,4 @@
-description: Generate an xMatters event based on the build status of a job.
+description: Generate an xMatters event based on the build status of a job
 
 parameters:
   author:
