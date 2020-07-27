@@ -79,6 +79,7 @@ steps:
         curl -X POST -H 'Content-type: application/json' \
           --data \
           "{\
+            \"recipients\": \"<< parameters.recipients >>\",\
             \"properties\": {\
               \"author\":        \"<< parameters.author >>\",\
               \"project\":       \"<< parameters.project >>\",\
@@ -88,7 +89,6 @@ steps:
               \"build\":         \"<< parameters.build >>\",\
               \"build_url\":     \"<< parameters.build_url >>\",\
               \"job\":           \"<< parameters.job >>\",\
-              \"recipients\":    \"<< parameters.recipients >>\",\
               \"job_status\":    \"$XM_BUILD_STATUS\" \
             } \
           }" "<< parameters.xm_url >>"
